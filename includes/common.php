@@ -13,14 +13,14 @@ date_default_timezone_set('America/Chicago');
 // this function is called if the user failed authorization
 if (!function_exists('redirectUser')) {
 	function redirectUser($errorMessage) {
-		if (empty($_SERVER['HTTP_REFERER'])) {
+		if($errorMessage != NULL) {
 			$_SESSION['pageError'] = $errorMessage;
+		}
+		if (empty($_SERVER['HTTP_REFERER'])) {
 			header('location: ' . WWW_ROOT . 'index.php');
 		} else {
-			$_SESSION['pageError'] = $errorMessage;
 			$returnURL = $_SERVER['HTTP_REFERER'];
 			header('location: ' . $returnURL);
-			
 		}
 		die();
 	}
