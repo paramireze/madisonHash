@@ -57,32 +57,37 @@
 			$name = $get_hasher_row['name'];
 			$email = $get_hasher_row['email'];
 			$hashName = $get_hasher_row['hashName'];
+			
+			echo '<p></p>'
+			.'	  <div class="control-group">                                                             '
+			.'		<label class="control-label"  for="input01">user name:</label>                        '
+			.'		<div class="controls">                                                                '
+			.'		  <input type=\'text\'  name=\'name\' id="name" data-trigger=\'focus\'                '
+			.'			rel="popover" data-content="Used only for log in purposes, not a display name."   '
+			.'			data-original-title="FYI" />                                                      '
+			.'		  <p class="help-block"></p>                                                          '
+			.'		</div>                                                                                '
+			.'	  </div>                                                                                  ';
+			
+			
+			echo '<div class="control-group"> '
+			.'		<label class="control-label"  for="input01">hasher name:</label>                        '
+			.'		<div class="controls">                			                                        '
+			.'		  <input type=\'text\'  name=\'hashName\' id="hashName" data-trigger=\'focus\'          '
+			.'			rel="popover" data-content="Let us know who you are so we know if you\'re a member."' 
+			.'			data-original-title="" />			                                                '
+			.'		  <p class="help-block"></p>                                                            '
+			.'		</div>                                                                                  '
+			.'	</div>                                                                                      ';
+			
 
+			
+			
+			
 		 ?>
-		 <p></p>
-          <div class="control-group">  
-            <label class="control-label"  for="input01">user name:</label>  
-            <div class="controls">                
-			  
-			  <input type='text'  name='name' id="name" data-trigger='focus' 
-				rel="popover" data-content="Used only for log in purposes, not a display name." 
-				data-original-title="FYI" />
-			  
-              <p class="help-block"></p>  
-            </div>  
-          </div>
+		 
+		 
 		  
-		  <div class="control-group">  
-            <label class="control-label"  for="input01">hash name:</label>  
-            <div class="controls">                
-			  
-			  <input type='text'  name='hashName' id="hashName" data-trigger='focus' 
-				rel="popover" data-content="Let us know who you are so we know if you're a member." 
-				data-original-title="" />
-			  
-              <p class="help-block"></p>  
-            </div>  
-          </div>
 		  
 
           <div class="control-group">  
