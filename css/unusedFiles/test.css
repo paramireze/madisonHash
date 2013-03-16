@@ -1,0 +1,205 @@
+
+  blockquote.float-left {/* floats in content div */
+  float: left;
+  width: 13.5em; /* "em size" is element dependent */
+  padding: 0.5em;
+  margin: 0 0.5em 0 0;
+  color: #00008b;
+  background: #b0c4de;
+  border-right: 2px dotted #4169e1;
+  border-bottom: 2px dotted #4169e1;
+  }
+  blockquote.float-right {/* floats in content div */
+  float: right;
+  width: 13.5em; /* "em size" is element dependent */
+  padding: 0.5em;
+  margin: 0 0.5em 0 0;
+  color: #00008b;
+  background: #b0c4de;
+  border-left: 2px dotted #4169e1;
+  border-top: 2px dotted #4169e1;
+border-bottom: 2px dotted #4169e1;
+  }
+/*
+
+  blockquote span.cap-g {/* floats in blockquote */
+  float: right;
+
+  font-size: 1.7em;
+  padding: 0 0.15em;
+  margin: 0 0.15em -0.5em 0; /* negative bottom margin */
+  color: #b22222;
+  background: #90ee90;
+  border: 3px outset #2e8b57;
+  }
+*/
+  blockquote &gt; p {/* control mozilla paragraph margin */
+  margin: 0 0 0.5em 0;
+  }
+
+  blockquote.float-left strong {
+  color: #000080;
+  }
+
+  blockquote.float-left em {
+  color: #800080;
+  }
+
+  p.after-blockquote {
+  padding: 0.4em;
+  border-top: 3px dotted #696969;
+  background: rgb(204, 204, 204);
+  }
+
+  span.cap-g {/* floats in anything */
+/*  float: left;*/
+
+  font-size: 1.7em;
+  padding: 0 0.15em;
+  margin: 0 0.15em -0.5em 0; /* negative bottom margin */
+  color: #0000;
+  background: rgb(153, 153, 255);
+  border: 3px outset #00008b;
+  }
+body{ color: rgb(0, 0, 0);}
+#hdr{
+position: relative;
+width: 100%;
+left: 0px;
+top: 0px;
+}
+#hdrleftbox{
+position: absolute;
+left: 0px;
+top: 0px;
+width: 200px;
+height: 167px;
+border: none;
+background-color: rgb(153, 153, 255);
+padding: 0px;
+z_index: 1;
+float: left;
+}
+#hdrbox{
+position: relative;
+height: 167px;
+border: none;
+background-color: rgb(153, 153, 255);
+padding: 0px;
+text-align:center;
+}
+
+#menu {width:120px; margin:40px 15px;}
+#menu a, #menu a:visited {display:block; width:100%; height:40px; line-height:40px; text-decoration:none; color:#000; background:url(../img/littlefeet.gif); background-repeat:no-repeat;}
+#menu a span {padding-left:40px;}
+#menu a:hover {display:block; width:100%; height:40px; cursor:pointer; text-decoration:none; color:#c00; background:url(../img/beermugc.jpg); background-repeat:no-repeat;}
+
+#menuh {
+padding:0;
+margin:0;
+height:40px;
+list-style-type:none;
+background: #fff
+}
+#menuh li {
+float:left; 
+width:10em; 
+height:40px;
+line-height:40px;
+position:relative;
+text-align:center;
+}
+#menuh li a, #menuh li a:visited {
+display:block;
+text-decoration:none; 
+color: rgb(0, 0, 255);
+background:url(../img/littlefeet.gif);
+background-repeat:no-repeat;
+}
+#menuh li a span, #menuh li a:visited span {
+display:none; /* needed to trigger IE */
+}
+#menuh li a:hover span{
+border:0; 
+}
+#menuh li a:hover {
+display:block;
+width:10em;
+height:3em;
+text-align:center;
+position:absolute; 
+left:0px; 
+top:0px; 
+color:#c00; 
+cursor:pointer;
+background:url(../img/beermugc.jpg);
+background-repeat:no-repeat;
+}
+
+#runcontent {}
+#runcontent h2 {color: rgb(0, 0, 153);}
+
+#content {overflow:auto; position:absolute; z-index:3; top:100px; bottom:50px; left:200px; right:0; background:#eee;}
+
+#smallprint {font-size:0.9em; text-align:center;}
+#fineprint {position:fixed;font-size:0.7em; text-align:center; bottom:-1px;width:100%;}
+#foot {position:fixed; margin:0; bottom:-1px; right:18px; display:block; width:100%; height:20px; background:rgb(0,0,255); color:#fff; text-align:center; font-size:0.7em; z-index:4;}
+
+#cheader,#lcontent,#ccontent,#rcontent,#cfooter {
+overflow:hidden;
+display:inline-block
+}
+/* safari and opera need this */
+#cheader,#cfooter {width:100%}
+#contentbox {height: 300px; background:rgb(153,153,255);}
+#lcontent,#ccontent,#rcontent {float:left; text-align:center;height: 300px;}
+#lcontent {width:20%; background:#cc66cc; color:#330033; height: 300px;}
+#ccontent {width:60%; background:rgb(153,153,255);}
+#rcontent {width:19.9%; background:#ff6666; color:#990000}
+#cfooter {clear:left}
+
+#container {background:#d8d8ee; width:600px; margin:15px; padding:20px;}
+.xsnazzy h1, .xsnazzy h2, .xsnazzy p {margin:0 10px; letter-spacing:1px;}
+.xsnazzy h1 {font-size:2.5em; color:#fc0;}
+.xsnazzy h2 {font-size:2em; color:#234; border:0;}
+.xsnazzy p {padding-bottom:0.5em; color:#eee;}
+.xsnazzy h2 {padding-top:0.5em; padding-left:10px;}
+.xsnazzy {background: transparent; margin:1em;}
+
+.xsnazzy em {display:block; width:0; height:0; color:#d8d8ee; overflow:hidden; border-top:12px solid #000; border-left:12px dotted transparent; border-right:12px dotted transparent; margin-left:50px;}
+/* hack for IE5.5 */
+* html .xsnazzy em {width:24px; height:12px; w\idth:0; hei\ght:0;}
+.xsnazzy span {display:block; width:0; height:0; color:#fff; overflow:hidden; border-top:10px solid #7f7f9c; border-left:10px dotted transparent; border-right:10px dotted transparent; margin-left:52px; margin-top:-15px;}
+* html .xsnazzy span {width:20px; height:10px; w\idth:0; hei\ght:0;}
+
+.xb1, .xb2, .xb3, .xb4, .xb5, .xb6, .xb7 {display:block; overflow:hidden; font-size:0;}
+.xb1, .xb2, .xb3, .xb4, .xb5, .xb6 {height:1px;}
+.xb4, .xb5, .xb6, .xb7 {background:#ccc; border-left:1px solid #fff; border-right:1px solid #fff;}
+
+.xb1 {margin:0 8px; background:#fff;}
+.xb2 {margin:0 6px; background:#fff;}
+.xb3 {margin:0 4px; background:#fff;}
+.xb4 {margin:0 3px; background:#7f7f9c; border-width:0 5px;}
+
+.xb5 {margin:0 2px; background:#7f7f9c; border-width:0 4px;}
+.xb6 {margin:0 2px; background:#7f7f9c; border-width:0 3px;} 
+.xb7 {margin:0 1px; background:#7f7f9c; border-width:0 3px; height:2px;} 
+
+
+.xboxcontent {display:block; background:#7f7f9c; border:3px solid #fff; border-width:0 3px;}
+
+
+.curvy {position:relative; width:250px; background:#9caf9c; color:#000; margin:5em auto;}
+#ctl, #cbl, #ctr, #cbr {position:absolute; width:20px; height:20px; color:#9caf9c; background:#fff; overflow:hidden; font-style:normal; z-index:1;}
+#ctl {top:0; left:0;}
+#cbl {bottom:0; left:0;}
+#ctr {top:0; right:0;}
+#cbr {bottom:0; right:0;}
+.curvy em b {position:absolute; font-size:150px; font-family:arial; color:#9caf9c; line-height:40px; font-weight:normal;}
+#ctl b {left:-8px;}
+#ctr b {left:-25px;}
+#cbl b {left:-8px; top:-17px;}
+#cbr b {left:-25px; top:-17px;}
+.curvy p {position:relative; z-index:100; padding:5px 10px;}
+
+

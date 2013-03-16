@@ -1,0 +1,14 @@
+/*footer*/
+#footer { background:#FF5B00; text-align:center;}
+#footer p { color:#f9dcf0; font-size:.91em;}
+#footer p a {color:#f9dcf0;}
+/*==========================================*/
+#modifiedblockquote {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	color: #a5a4a4;
+	font-style: italic;
+	margin: 30px;
+	padding: 30px;    
+	text-align: center;
+}

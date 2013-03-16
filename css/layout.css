@@ -1,0 +1,29 @@
+#main {width:995px; margin:0 auto; text-align:left;}
+
+#header {height:260px;}
+#header, #content, #footer { font-size:.69em;}
+
+
+.col_1, .col_2, .col_3, .column1, .column2, .column3 { float:left;}
+
+/*======= index.html =======*/
+#page1 #content .col_1 {width:219px; margin-right:26px;}
+#page1 #content .col_2 { width:504px; margin-right:26px;}
+#page1 #content .col_3 { width:219px;}
+
+/*======= index-1.html =======*/
+#page2 #content .col_1 {width:219px; margin-right:26px;}
+#page2 #content .col_2 { width:515px;}
+
+#page2 #content .col_2 .column1 { width:169px;}
+#page2 #content .col_2 .column2 { width:344px;}
+#page2 #content .col_2 .row_1 { padding-bottom:46px;}
+#page2 #content .col_2 .row_2 .column1 { width:262px; margin-right:2px;}
+#page2 #content .col_2 .row_2 .column2 { width:251px;}
+
+/*=========================*/
+
+
+#footer {height:58px;}
+
+

@@ -1,0 +1,45 @@
+
+.stayDiv
+{
+    position: fixed;
+    top: 200px;
+    left: 10px;
+}
+
+
+
+
+
+#navcontainer ul
+{
+margin-left: 0;
+padding-left: 0;
+list-style-type: none;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+#navcontainer a
+{
+display: block;
+padding: 3px;
+width: 160px;
+height: 40px;
+text-align:center;
+background-color: #036;
+
+}
+
+#navcontainer a:link, #navlist a:visited
+{
+
+text-decoration: none;
+background:url(../img/littlefeet.gif);
+background-repeat:no-repeat;
+}
+
+#navcontainer a:hover
+{
+
+background:url(../img/beermugc.jpg);
+background-repeat:no-repeat;
+}

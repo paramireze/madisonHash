@@ -1,0 +1,9 @@
+#Options +Includes
+XBitHack Full 
+# make html file handle server side includes like a shtml file
+AddHandler server-parsed .html
+AddType text/x-component .htc
+
+	
+
+DirectoryIndex index.php 
