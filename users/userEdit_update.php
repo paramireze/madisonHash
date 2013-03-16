@@ -17,32 +17,34 @@ return:
 */
 include '../includes/common.php';
 //reset errors 
+$errorMessage = NULL;
 $_SESSION['errors'] = NULL;
 $_SESSION['errors'] = array();
 
 /* -------------- SECURITY METHODS -------------- */
 // check to see if user typed in the url, instead of submitting login form
 if(!isset($_SERVER['HTTP_REFERER'])) {
-	
-	header('location: ' . WWW_ROOT . 'index.php');
-	die();
-}
+	$errorMessage = 'Program was unable to process the submitted form';
+	redirectUser($errorMessage);}
 
 $returnURL = $_SERVER['HTTP_REFERER'];
-if (empty($_POST['id'])
-redirectUser()
+if (empty($_POST['id'])) {
+	$errorMessage = 'Program was unable to process the submitted form';
+	redirectUser($errorMessage);
+}
+
 // This variable is assigned a value when submitting the login form
 // if ont, send back to whatever page they were on
 if (!isset($_POST['token'])) {
-	header('location: '. $returnURL);
-	die();
+	$errorMessage = 'Program was unable to process the submitted form';
+	redirectUser($errorMessage);
 } 
 
 // function returns either true (which is bad), or false( which means the tokens match)
 $badFormSubmissoin = checkToken($_POST['token']);
 if ($badFormSubmissoin) {
-	header('location: '. $returnURL);
-	die();
+	$errorMessage = 'Program was unable to process the submitted form';
+	redirectUser($errorMessage);
 }
 destroyToken();
 /* -------------------------------------------------*/
