@@ -16,14 +16,13 @@ if (!function_exists('redirectUser')) {
 		if (empty($_SERVER['HTTP_REFERER'])) {
 			$_SESSION['pageError'] = $errorMessage;
 			header('location: ' . WWW_ROOT . 'index.php');
-			die();
 		} else {
 			$_SESSION['pageError'] = $errorMessage;
 			$returnURL = $_SERVER['HTTP_REFERER'];
 			header('location: ' . $returnURL);
-			die();
 			
 		}
+		die();
 	}
 }
 
