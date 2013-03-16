@@ -25,7 +25,7 @@
 		<!-- content row 1 -->
 		
 	<div class="hero-unit">
-        <form id="registration" class="form-horizontal" method='post' action='newUser.php'> 
+        <form id="registration" class="form-horizontal" method='post' action='<?php echo WWW_ROOT; ?>users/userEdit_update.php'> 
 		
         <fieldset>  
           <legend>Edit Page</legend> 
