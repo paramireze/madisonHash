@@ -81,6 +81,16 @@
 			.'		</div>                                                                                  '
 			.'	</div>                                                                                      ';
 			
+			echo   '<div class="control-group">'                                                              
+			.'			<label class="control-label"  for="input01">email:</label>                            '
+			.'			<div class="controls">                                                                '
+			.'				<input type=\'text\'  class="" name=\'email\' id=\'email\' data-trigger=\'focus\' '
+			.'				rel="popover" data-content="For password reset only"                              '
+			.'				data-original-title="don\'t worry" value="' . $email .'"/>                        '
+			.'			</div>                                                                                '
+			.'		</div>                                                                                    ';
+				
+			echo '<legend>Change Password</legend> ';
 			echo '<div class="control-group">'
 			.'		<label class="control-label"  name=\'password\' for="password">password:</label>     '
 			.'		<div class="controls">                                                               '
@@ -89,20 +99,21 @@
 			.'			data-original-title="" />                                                        '
 			.'		  <p class="help-block"></p>                                                         '
 			.'		</div>                                                                               '
-			.'	</div>                                                                                  ';
-
-			echo   '<div class="control-group">'                                                              
-			.'			<label class="control-label"  for="input01">email:</label>                            '
-			.'			<div class="controls">                                                                '
-			.'				<input type=\'text\'  class="" name=\'email\' id=\'email\' data-trigger=\'focus\' '
-			.'				rel="popover" data-content="For password reset only"                              '
-			.'				data-original-title="don\'t worry" value="' . $email .'"/>                        '
-			.'			</div>                                                                                '
-			.'		</div>                                                                                    '
-			.'		<button type="submit" class="btn btn-primary" onclick=\'formSubmit()\' >Submit</button>   '
-			.'	</div>                                                                                        '
-			.'</fieldset>                                                                                     ';
-
+			.'	</div>   
+			';
+			echo '<div class="control-group">'
+			.'		<label class="control-label"  name=\'password\' for="password">password:</label>     '
+			.'		<div class="controls">                                                               '
+			.'		  <input type=\'password\'  name=\'password\' id="password" data-trigger=\'focus\'   '
+			.'			rel="popover" data-content="at least 6 characters long"                          '
+			.'			data-original-title="" />                                                        '
+			.'		  <p class="help-block"></p>                                                         '
+			.'		</div>                                                                               '
+			.'	</div>                                                                                   '
+			.'	<button type="submit" class="btn btn-primary" onclick=\'formSubmit()\' >Submit</button>  '
+			.'	</div>                                                                                   '
+			.'</fieldset>                                                                                ';
+			
 			echo getTokenField(); 
 		?>
 		</form>  
