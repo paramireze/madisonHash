@@ -7,6 +7,11 @@
 <head>
 	<?php
 	include DIR_ROOT . 'includes/header.php';
+	include  DIR_ROOT . 'includes/functions/database_connection.php';
+	include  DIR_ROOT . 'includes/functions/do_pdo_query.php';
+	include  DIR_ROOT . 'methods/user_methods.php';
+	$hash = pdo_connect_hash();
+
 	getToken();
 	?>
 </head>
@@ -23,11 +28,18 @@
         <form id="registration" class="form-horizontal" method='post' action='newUser.php'> 
 		
         <fieldset>  
-          <legend>Registration</legend> 
+          <legend>Edit Page</legend> 
 				
 		  
 		 <?php
-			// if any errors from newUser.php - display messages here.
+			// id in the query string is required. Send to error page if missing.
+			if (empty($_GET['id'])) {
+				$_SESSION['bug'] = 'Apologies, unable to retrieve record';
+				header('location: ' . WWW_ROOT  . 'error.php ');
+				die();
+			}
+			$id = $_GET['id'];
+			
 			if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
 				foreach ($_SESSION['errors'] as $errorMessage) {			
 					echo '<div class="alert alert-error">  
@@ -39,6 +51,8 @@
 			//reset errors 
 			$_SESSION['errors'] = NULL;
 			$_SESSION['errors'] = array();
+			
+			$get_hasher_stmt = getHasherById($hash, $id);
 
 		 ?>
 		 <p></p>

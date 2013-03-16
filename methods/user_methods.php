@@ -64,7 +64,26 @@ if (!function_exists('getHasherByName')) {
 		
 		$get_single_user_stmt = do_pdo_query($conn, $get_single_user['query'], $get_single_user['params']);
 		if ($get_single_user_stmt->rowCount() != 1) {
-			$_SESSION['bug'] = 'Currently experiencing an log in error :(';
+			$_SESSION['bug'] = 'Currently experiencing a log in error :(';
+			header('location: ' . WWW_ROOT  . 'error.php ');
+			die();
+		}
+		return $get_single_user_stmt;
+		
+	}
+}
+if (!function_exists('getHasherById')) {
+	function getHasherById($conn, $id) {
+		$get_single_user['query'] = "SELECT user_id, name, role, salt, password
+								FROM users 
+								WHERE user_id = :id";
+								
+		$get_single_user['params'] = array();
+		$get_single_user['params'][':id'] = $id;
+		
+		$get_single_user_stmt = do_pdo_query($conn, $get_single_user['query'], $get_single_user['params']);
+		if ($get_single_user_stmt->rowCount() != 1) {
+			$_SESSION['bug'] = 'Apologies, unable to retrieve record';
 			header('location: ' . WWW_ROOT  . 'error.php ');
 			die();
 		}
