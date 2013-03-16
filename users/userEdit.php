@@ -53,6 +53,10 @@
 			$_SESSION['errors'] = array();
 			
 			$get_hasher_stmt = getHasherById($hash, $id);
+			$get_hasher_row = $get_hasher_stmt->fetch();
+			$name = $get_hasher_row['name'];
+			$email = $get_hasher_row['email'];
+			$hashName = $get_hasher_row['hashName'];
 
 		 ?>
 		 <p></p>
