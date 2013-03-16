@@ -102,9 +102,9 @@
 			.'	</div>   
 			';
 			echo '<div class="control-group">'
-			.'		<label class="control-label"  name=\'password\' for="password">password:</label>     '
+			.'		<label class="control-label" for="password">Re-enter password:</label>               '
 			.'		<div class="controls">                                                               '
-			.'		  <input type=\'password\'  name=\'password\' id="password" data-trigger=\'focus\'   '
+			.'		  <input type=\'password\'  name=\'password2\' id="password2" data-trigger=\'focus\' '
 			.'			rel="popover" data-content="at least 6 characters long"                          '
 			.'			data-original-title="" />                                                        '
 			.'		  <p class="help-block"></p>                                                         '
