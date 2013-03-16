@@ -114,15 +114,11 @@
 			.'	</div>                                                                                   '
 			.'</fieldset>                                                                                ';
 			
-			echo getTokenField(); 
-		?>
-		</form>  
-      </div>
-	  
-
-	
-	<!-- footer -->
-	<?php
+			echo getTokenField()
+			. '<input type="hidden" name="id" value="'. $id.'" />'
+		. '</form>'
+	. '</div>';
+		
 	include DIR_ROOT . "includes/footer.html";
 ?>
 </div>
