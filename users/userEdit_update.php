@@ -60,11 +60,11 @@ $hash = pdo_connect_hash();
 
 $get_hasher_stmt = getHasherById($hash, $id);
 $get_hasher_row = $get_hasher_stmt->fetch();
-$name = $get_hasher_row['name'];
-$email = $get_hasher_row['email'];
-$hashName = $get_hasher_row['hashName'];
-$password = $get_hasher_row['password'];
-$salt = $get_hasher_row['salt'];
+$db_name = $get_hasher_row['name'];
+$db_email = $get_hasher_row['email'];
+$db_hashName = $get_hasher_row['hashName'];
+$db_password = $get_hasher_row['password'];
+$db_salt = $get_hasher_row['salt'];
 
 // check to see if they entered anything
 if (empty($_POST['name'])) {
