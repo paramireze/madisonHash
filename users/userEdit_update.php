@@ -114,6 +114,17 @@ if (!empty($_POST['password'])) {
 	if (strlen($password) < 6) {
 		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
 	}
+	//hash password
+	$hashedAndSaltedPassword = sha1($db_salt . $password);
+	if ($hashedAndSaltedPassword != $db_password) {
+		$updateWorked = updatePassword($hash, $id, $password);
+		if ($updateWorked->rowCount() != 1) {
+			$_SESSION['bug'] = 'unable to update your password.';
+			header('location: ' . WWW_ROOT  . 'error.php ');
+			die();
+		}
+		$_SESSION['success']['password'] = 'Password Updated!';
+	}
 }
 // make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 
@@ -124,10 +135,6 @@ if (!empty($_SESSION['errors'])) {
 	die();
 }
 
-//hash password
-$salt = sha1(uniqid());
-$password = $_POST['password'];
-$hashedAndSaltedPassword = sha1($salt . $password);
 //insert into user
 $insert_stmt = insertUser($hash, $name, $hashedAndSaltedPassword, $email, $salt, $hashName);
 // check if insert failed
