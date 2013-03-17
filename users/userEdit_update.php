@@ -101,11 +101,14 @@ if (!empty($_SESSION['errors'])) {
 	die();
 }
 
-// make sure this person isn't making a user name that someone else has choosen.
-$nameIsNotUnique = checkUniqueUserName($hash, $name);
-if ($nameIsNotUnique) {
-	$_SESSION['errors']['duplicatename'] = 'Sorry, that name is already being used. Please choose another.';
+if ($db_name != $name) {
+	// make sure this person isn't making a user name that someone else has choosen.
+	$nameIsNotUnique = checkUniqueUserName($hash, $name);
+	if ($nameIsNotUnique) {
+		$_SESSION['errors']['duplicatename'] = 'Sorry, that name is already being used. Please choose another.';
+	}
 }
+
 // see if they typed something that resembles an email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	$_SESSION['errors']['notvalidemail'] = 'Invalid email.';
