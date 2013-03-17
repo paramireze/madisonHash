@@ -17,7 +17,7 @@ if (!function_exists('insertUser')) {
 if (!function_exists('updatePassword')) {
 	function updatePassword($conn, $id, $password) {
 		$update_password['query'] = "UPDATE users 
-						SET (password = :password)
+						SET password = :password
 						WHERE user_id = :id";
 		$update_password['params'] = array();
 		$update_password['params'][':password'] = $password;
