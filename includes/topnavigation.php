@@ -104,9 +104,18 @@
 			if (isset($_SESSION['pageError']) && $_SESSION['pageError'] != '') {
 				echo '<div class="alert alert-error">  
 					<a class="close" data-dismiss="alert">x</a>  
-					<strong>' . $_SESSION['pageError'] . '</strong>';
+					<strong>' . $_SESSION['pageError'] . '</strong></div>';
 			}
-			$_SESSION['pageError'] = false;
+			$_SESSION['pageError'] = NULL;
+			// sends confirmation to user
+			if (isset($_SESSION['success'])) {
+				echo '<div class="alert alert-success">  
+					<a class="close" data-dismiss="alert">x</a>  
+					<strong>' . $_SESSION['success'] . '</strong></div>';
+								
+			}
+			$_SESSION['success'] = NULL;
+
 		  ?>
 		 
 		  
