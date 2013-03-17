@@ -90,11 +90,6 @@ if (empty($_POST['email'])) {
 } else {
 	$email = $_POST['email'];
 }
-if (empty($_POST['password'])) {
-	$_SESSION['errors']['nullpassword'] = 'Password is required';
-} else {
-	$password = $_POST['password'];
-}
 // if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
 	header('location: '. WWW_ROOT . 'login/register.php ');
