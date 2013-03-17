@@ -33,7 +33,7 @@ if (empty($_POST['id'])) {
 	$errorMessage = 'Program was unable to process the submitted form';
 	redirectUser($errorMessage);
 }
-
+$id = $_POST['id'];
 // This variable is assigned a value when submitting the login form
 // if ont, send back to whatever page they were on
 if (!isset($_POST['token'])) {
@@ -58,7 +58,13 @@ include  DIR_ROOT . 'includes/functions/do_pdo_query.php';
 include  DIR_ROOT . 'methods/user_methods.php';
 $hash = pdo_connect_hash();
 
-
+$get_hasher_stmt = getHasherById($hash, $id);
+$get_hasher_row = $get_hasher_stmt->fetch();
+$name = $get_hasher_row['name'];
+$email = $get_hasher_row['email'];
+$hashName = $get_hasher_row['hashName'];
+$password = $get_hasher_row['password'];
+$salt = $get_hasher_row['salt'];
 
 // check to see if they entered anything
 if (empty($_POST['name'])) {
