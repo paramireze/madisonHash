@@ -108,15 +108,18 @@ if ($db_name != $name) {
 		$_SESSION['errors']['duplicatename'] = 'Sorry, that name is already being used. Please choose another.';
 	}
 }
-
-// see if they typed something that resembles an email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-	$_SESSION['errors']['notvalidemail'] = 'Invalid email.';
+if ($email != $db_email) {
+	// see if they typed something that resembles an email
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		$_SESSION['errors']['notvalidemail'] = 'Invalid email.';
+	}
 }
+
 // make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 if (strlen($password) < 6) {
 	$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
 }
+
 
 // after further validation  - if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
