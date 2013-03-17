@@ -18,7 +18,7 @@ if (!function_exists('updatePassword')) {
 	function updatePassword($conn, $id, $password) {
 		$update_password['query'] = "UPDATE users 
 						SET (password = :password)
-						WHERE id = :id";
+						WHERE user_id = :id";
 		$update_password['params'] = array();
 		$update_password['params'][':password'] = $password;
 		$update_password['params'][':id'] = $id;
@@ -74,7 +74,7 @@ if (!function_exists('getHasherByName')) {
 }
 if (!function_exists('getHasherById')) {
 	function getHasherById($conn, $id) {
-		$get_single_user['query'] = "SELECT user_id, name, role, salt, password
+		$get_single_user['query'] = "SELECT user_id, name, role, salt, password, email, hashName
 								FROM users 
 								WHERE user_id = :id";
 								
