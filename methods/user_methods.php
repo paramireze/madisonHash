@@ -31,7 +31,7 @@ if (!function_exists('updateUser')) {
 	function updateUser($conn, $id, $name, $role, $hashName) {
 		$update_user['query'] = "UPDATE users 
 						SET (name = :name, hashName = :hashName, password = :password, role = :role)
-						WHERE id = :id";
+						WHERE user_id = :id";
 		$update_user['params'] = array();
 		$update_user['params'][':name'] = $name;
 		$update_user['params'][':hashName'] = $hashName;
@@ -45,7 +45,7 @@ if (!function_exists('updateUser')) {
 if (!function_exists('deleteUser')) {
 	function deleteUser($conn, $id) {
 		$delete_user['query'] = "DELETE FROM users 
-							WHERE id = :id";
+							WHERE user_id = :id";
 		$delete_user['params'] = array();
 		$delete_user['params'][':id'] = $id;
 		
