@@ -109,11 +109,13 @@ if ($email != $db_email) {
 		$_SESSION['errors']['notvalidemail'] = 'Invalid email.';
 	}
 }
-
-// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
-if (strlen($password) < 6) {
-	$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
+if (!empty($_POST['password'])) {
+	$password = $_POST['password'];
+	if (strlen($password) < 6) {
+		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
+	}
 }
+// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 
 
 // after further validation  - if errors, back to registration form
