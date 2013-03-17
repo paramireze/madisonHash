@@ -50,7 +50,10 @@
 			}
 			//reset errors 
 			$_SESSION['errors'] = NULL;
-			$_SESSION['errors'] = array();
+			unset($_SESSION['errors']);
+			
+			$_SESSION['success'] = NULL;			
+			unset($_SESSION['success']);
 			
 			$get_hasher_stmt = getHasherById($hash, $id);
 			$get_hasher_row = $get_hasher_stmt->fetch();
