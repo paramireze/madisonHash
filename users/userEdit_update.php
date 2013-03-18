@@ -78,11 +78,6 @@ if (empty($_POST['hashName'])) {
 	$hashName = $_POST['hashName'];
 }
 
-// make sure user name is only letters and numbers
-if (!ctype_alnum($name)) {
-	$_SESSION['errors']['badname'] = 'user name can only contain letters and numbers';
-} 
-
 
 if (empty($_POST['email'])) {
 	$_SESSION['errors']['nullemail'] = 'Email required. Don\'t worry, we only need it to reset your password.';
@@ -94,6 +89,11 @@ if (!empty($_SESSION['errors'])) {
 	header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
 	die();
 }
+
+// make sure user name is only letters and numbers
+if (!ctype_alnum($name)) {
+	$_SESSION['errors']['badname'] = 'user name can only contain letters and numbers';
+} 
 
 if ($db_name != $name) {
 	// make sure this person isn't making a user name that someone else has choosen.
@@ -108,8 +108,14 @@ if ($email != $db_email) {
 		$_SESSION['errors']['notvalidemail'] = 'Invalid email.';
 	}
 }
-if (!empty($_POST['password'])) {
+if (!empty($_POST['password'])) {	
+	if (empty($_POST['password2'])) {
+		$_SESSION['errors']['nullname'] = 'Passwords don\'t match';
+		header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
+		die();
+	}
 	$password = $_POST['password'];
+
 	// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 	if (strlen($password) < 6) {
 		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
