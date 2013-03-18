@@ -32,7 +32,7 @@ if(!isset($_SERVER['HTTP_REFERER'])) {
 $returnURL = $_SERVER['HTTP_REFERER'];
 
 if (empty($_POST['id'])) {
-	$errorMessage = '$_POST is empty.';
+	$errorMessage = 'Unable to update user information';
 	redirectUser($errorMessage);
 }
 
@@ -91,7 +91,7 @@ if (empty($_POST['email'])) {
 }
 // if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
-	header('location: '. WWW_ROOT . 'login/userEdit.php ');
+	header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
 	die();
 }
 
@@ -115,7 +115,6 @@ if (!empty($_POST['password'])) {
 		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
 		header('location: '. WWW_ROOT . 'users/userEdit.php?id=' . $id);
 		die();
-
 	}
 	//hash password
 	if (!isset($_SESSION['errors'])) {
