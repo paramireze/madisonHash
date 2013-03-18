@@ -110,12 +110,19 @@ if ($email != $db_email) {
 }
 if (!empty($_POST['password'])) {	
 	if (empty($_POST['password2'])) {
+		$_SESSION['errors']['nullname'] = 'Must re-type password';
+		header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
+		die();
+	}
+	
+	$password = $_POST['password'];
+	$password2 = $_POST['password2'];
+	if ($password != $password2) {
 		$_SESSION['errors']['nullname'] = 'Passwords don\'t match';
 		header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
 		die();
 	}
-	$password = $_POST['password'];
-
+	
 	// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 	if (strlen($password) < 6) {
 		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
