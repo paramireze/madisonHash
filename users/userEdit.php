@@ -41,20 +41,6 @@
 		 <?php
 			// id in the query string is required. Send to error page if missing.
 			
-			if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
-				foreach ($_SESSION['errors'] as $errorMessage) {			
-					echo '<div class="alert alert-error">  
-					<a class="close" data-dismiss="alert">x</a>  
-					<strong></strong>' . $errorMessage . '  
-					</div>';
-				}
-			}
-			//reset errors 
-			$_SESSION['errors'] = NULL;
-			unset($_SESSION['errors']);
-			
-			$_SESSION['success'] = NULL;			
-			unset($_SESSION['success']);
 			
 			$get_hasher_stmt = getHasherById($hash, $id);
 			$get_hasher_row = $get_hasher_stmt->fetch();
@@ -62,61 +48,58 @@
 			$email = $get_hasher_row['email'];
 			$hashName = $get_hasher_row['hashName'];
 			
-			echo '<p></p>'
-			.'	  <div class="control-group">                                                             '
-			.'		<label class="control-label"  for="input01">user name:</label>                        '
-			.'		<div class="controls">                                                                '
-			.'		  <input type=\'text\'  name=\'name\' id="name" data-trigger=\'focus\'                '
-			.'			rel="popover" value="' . $name . '" data-content="Used only for log in purposes,  '
-		    .'            not a display name."   														  '	
-			.'			data-original-title="FYI" />                                                      '
-			.'		  <p class="help-block"></p>                                                          '
-			.'		</div>                                                                                '
-			.'	  </div>                                                                                  ';
+			echo '
+			<div class="control-group">
+				<label class="control-label"  for="input01">user name:</label>  
+				<div class="controls">  
+					<input type=\'text\'  name=\'name\' id="name" data-trigger=\'focus\' 
+					rel="popover" value="' . $name . '" data-content="Used only for log in purposes, 
+					not a display name."   
+					data-original-title="FYI" />   
+				</div>   
+			</div>';
 			
 			
-			echo '<div class="control-group"> '
-			.'		<label class="control-label"  for="input01">hasher name:</label>                        '
-			.'		<div class="controls">                			                                        '
-			.'		  <input type=\'text\'  name=\'hashName\' id="hashName" data-trigger=\'focus\'          '
-			.'			rel="popover" data-content="Let us know who you are so we know if you\'re a member."' 
-			.'			value= "' . $hashName . '" />		                                                '
-			.'		  <p class="help-block"></p>                                                            '
-			.'		</div>                                                                                  '
-			.'	</div>                                                                                      ';
+			echo '
+			<div class="control-group">
+				<label class="control-label"  for="input01">hasher name:</label>
+				<div class="controls">
+					<input type=\'text\'  name=\'hashName\' id="hashName" data-trigger=\'focus\' 
+					rel="popover" data-content="Let us know who you are so we know if you\'re a member."
+					value= "' . $hashName . '" />
+				</div>
+			</div>';
 			
-			echo   '<div class="control-group">'                                                              
-			.'			<label class="control-label"  for="input01">email:</label>                            '
-			.'			<div class="controls">                                                                '
-			.'				<input type=\'text\'  class="" name=\'email\' id=\'email\' data-trigger=\'focus\' '
-			.'				rel="popover" data-content="For password reset only"                              '
-			.'				data-original-title="don\'t worry" value="' . $email .'"/>                        '
-			.'			</div>                                                                                '
-			.'		</div>                                                                                    ';
+			echo   '
+			<div class="control-group">
+				<label class="control-label"  for="input01">email:</label>
+				<div class="controls">
+					<input type=\'text\'  class="" name=\'email\' id=\'email\' data-trigger=\'focus\'
+					rel="popover" data-content="For password reset only"
+					data-original-title="don\'t worry" value="' . $email .'"/> 
+				</div> 
+			</div>';
 				
-			echo '<legend>Change Password</legend> ';
-			echo '<div class="control-group">'
-			.'		<label class="control-label"  name=\'password\' for="password">password:</label>     '
-			.'		<div class="controls">                                                               '
-			.'		  <input type=\'password\'  name=\'password\' id="password" data-trigger=\'focus\'   '
-			.'			rel="popover" data-content="at least 6 characters long"                          '
-			.'			data-original-title="" />                                                        '
-			.'		  <p class="help-block"></p>                                                         '
-			.'		</div>                                                                               '
-			.'	</div>   
-			';
-			echo '<div class="control-group">'
-			.'		<label class="control-label" for="password">Re-enter password:</label>               '
-			.'		<div class="controls">                                                               '
-			.'		  <input type=\'password\'  name=\'password2\' id="password2" data-trigger=\'focus\' '
-			.'			rel="popover" data-content="at least 6 characters long"                          '
-			.'			data-original-title="" />                                                        '
-			.'		  <p class="help-block"></p>                                                         '
-			.'		</div>                                                                               '
-			.'	</div>                                                                                   '
-			.'	<button type="submit" class="btn btn-primary" onclick=\'formSubmit()\' >Submit</button>  '
-			.'	</div>                                                                                   '
-			.'</fieldset>                                                                                ';
+			echo '<legend>Change Password</legend> 
+			<div class="control-group">
+				<label class="control-label"  name=\'password\' for="password">password:</label>
+				<div class="controls">
+					<input type=\'password\'  name=\'password\' id="password" data-trigger=\'focus\'  
+					rel="popover" data-content="at least 6 characters long" /> 
+				</div>
+			</div>';
+			
+			echo '
+			<div class="control-group">
+				<label class="control-label" for="password">Re-enter password:</label>
+				<div class="controls">
+					<input type=\'password\'  name=\'password2\' id="password2" data-trigger=\'focus\' 
+					rel="popover" data-content="at least 6 characters long"/>
+					<p class="help-block"></p>					
+				</div>
+				<button type="submit" class="btn btn-primary" onclick=\'formSubmit()\' >Submit</button>
+			</div>
+			</fieldset>';
 			
 			echo getTokenField()
 			. '<input type="hidden" name="id" value="'. $id.'" />'
