@@ -117,7 +117,7 @@ if (!empty($_POST['password'])) {
 		die();
 	}
 	//hash password
-	if (!isset($_SESSION['errors'])) {
+	if (empty($_SESSION['errors'])) {
 		$hashedAndSaltedPassword = sha1($db_salt . $password);
 		if ($hashedAndSaltedPassword != $db_password) {
 			$updateWorked = updatePassword($hash, $id, $password);
@@ -127,7 +127,9 @@ if (!empty($_POST['password'])) {
 				header('location: ' . WWW_ROOT  . 'error.php ');
 				die();
 			}
-			$_SESSION['success'] = 'Password Updated!';
+			$_SESSION['success']['passwordUpdated'] = 'Password Updated!';
+			header('location:  '. WWW_ROOT . 'users/userEdit.php?id=' . $id);
+			die();
 		}
 	}
 }
@@ -136,7 +138,7 @@ if (!empty($_POST['password'])) {
 
 // after further validation  - if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
-	header('location:  '. WWW_ROOT . 'users/userEdit_update.php?id=' . $id);
+	header('location:  '. WWW_ROOT . 'users/userEdit.php?id=' . $id);
 	die();
 }
 //insert into user
