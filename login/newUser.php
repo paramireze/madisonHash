@@ -75,12 +75,21 @@ if (empty($_POST['password'])) {
 } else {
 	$password = $_POST['password'];
 }
+if (empty($_POST['password2'])) {
+	$_SESSION['errors']['nullpassword2'] = 'Please retype your password';
+} else {
+	$password2 = $_POST['password2'];
+}
+
 // if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
 	header('location: '. WWW_ROOT . 'login/register.php ');
 	die();
 }
 
+if ($password != $password2) {
+	$_SESSION['errors']['passworddoesntmatch'] = 'Passwords don\'t match';
+}
 // make sure user name is only letters and numbers
 if (!ctype_alnum($name)) {
 	$_SESSION['errors']['badname'] = 'user name can only contain letters and numbers';
@@ -105,6 +114,13 @@ if (!empty($_SESSION['errors'])) {
 	header('location:  '. WWW_ROOT . 'login/register.php ');
 	die();
 }
+if (empty($_POST['password2'])) {
+	$_SESSION['errors']['nullname'] = 'Must re-type password';
+	header('location: '. WWW_ROOT . 'users/userEdit.php?id='. $id);
+	die();
+}
+
+
 
 //hash password
 $salt = sha1(uniqid());
