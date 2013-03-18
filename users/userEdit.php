@@ -1,5 +1,12 @@
 <?php
 	include '../includes/common.php';
+	if (empty($_GET['id'])) {
+		$_SESSION['bug'] = 'Apologies, unable to retrieve record';
+		header('location: ' . WWW_ROOT  . 'error.php ');
+		die();
+	}
+	$id = $_GET['id'];
+
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -33,12 +40,6 @@
 		  
 		 <?php
 			// id in the query string is required. Send to error page if missing.
-			if (empty($_GET['id'])) {
-				$_SESSION['bug'] = 'Apologies, unable to retrieve record';
-				header('location: ' . WWW_ROOT  . 'error.php ');
-				die();
-			}
-			$id = $_GET['id'];
 			
 			if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
 				foreach ($_SESSION['errors'] as $errorMessage) {			
