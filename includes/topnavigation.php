@@ -66,8 +66,8 @@
 					
 					// if user is logged in
 					if (isset($_SESSION['user']) && $_SESSION['user']['loggedIn'] = true) {
-						if ($_SESSION['user']['role'] == 'guest') {			
-							echo "<ul class='nav'><li><a href='" . WWW_ROOT . "example.php'>example.php, yo</a></li></ul>";
+						if ($_SESSION['user']['role'] == 'admin') {			
+							echo "<ul class='nav'><li><a href='" . WWW_ROOT . "example.php'>admin controls</a></li></ul>";
 						}
 						echo "<ul class='nav'><li><a id='logout' href='" . WWW_ROOT . "login/logout.php'>logout</a></li></ul>";						
 					} else {
@@ -101,20 +101,38 @@
 		  <?php
 			// displays error message, if there is one
 			// ie, failed log in or unauthorized access
+			if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+				foreach ($_SESSION['errors'] as $errorMessage) {			
+					echo '<div class="alert alert-error">  
+					<a class="close" data-dismiss="alert">x</a>  
+					<strong></strong>' . $errorMessage . '  
+					</div>';
+				}
+			}
+			
+			if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
+				foreach ($_SESSION['success'] as $successMessage) {			
+				echo '<div class="alert alert-success">  
+					<a class="close" data-dismiss="alert">x</a>  
+					<strong>' . $successMessage . '</strong></div>';
+				}
+			}
+
+	
 			if (isset($_SESSION['pageError']) && $_SESSION['pageError'] != '') {
 				echo '<div class="alert alert-error">  
 					<a class="close" data-dismiss="alert">x</a>  
 					<strong>' . $_SESSION['pageError'] . '</strong></div>';
 			}
+
+			$_SESSION['errors'] = NULL;
+			unset($_SESSION['errors']);
+			
+			$_SESSION['success'] = NULL;			
+			unset($_SESSION['success']);
+			
 			$_SESSION['pageError'] = NULL;
-			// sends confirmation to user
-			if (isset($_SESSION['success'])) {
-				echo '<div class="alert alert-success">  
-					<a class="close" data-dismiss="alert">x</a>  
-					<strong>' . $_SESSION['success'] . '</strong></div>';
-								
-			}
-			$_SESSION['success'] = NULL;
+			unset($_SESSION['pageError']);
 
 		  ?>
 		 
