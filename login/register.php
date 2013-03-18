@@ -66,6 +66,19 @@
             </div>  
           </div>
 		  
+		<div class="control-group">  
+			<label class="control-label"  for="input01">email:</label>  
+			<div class="controls">  
+				
+				
+				
+			  <input type='text'  class="" name='email' id='email' data-trigger='focus' 
+				rel="popover" data-content="For password reset only" 
+				data-original-title="don't worry" />
+								  
+			  <p class="help-block"></p>  
+			</div>  
+		  </div> 
 
           <div class="control-group">  
             <label class="control-label"  name='password' for="password">password:</label>  
@@ -80,20 +93,18 @@
             </div>  
           </div>  
 		  
-		<div class="control-group">  
-            <label class="control-label"  for="input01">email:</label>  
+          <div class="control-group">  
+            <label class="control-label"  name='password' for="password">re-type password:</label>  
             <div class="controls">  
-				
-				
-				
-			  <input type='text'  class="" name='email' id='email' data-trigger='focus' 
-				rel="popover" data-content="For password reset only" 
-				data-original-title="don't worry" />
-						          
+			
+			  <input type='password'  name='password2' id="password2" data-trigger='focus' 
+				rel="popover" data-content="" />
+
+			
               <p class="help-block"></p>  
             </div>  
-          </div> 
-
+          </div>  
+		  
             <button type="submit" class="btn btn-primary" onclick='formSubmit()' >Submit</button>  
              
           </div> 
