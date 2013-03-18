@@ -5,9 +5,10 @@ if(!isset($_SESSION)) {
 
 date_default_timezone_set('America/Chicago');
 
+if ($_SERVER['DOCUMENT_ROOT'] == '/home/paramireze/test.madisonh3.com') {
 	error_reporting(E_ALL);
 	ini_set('display_errors','On');
-
+}
 
 // either redirect users back to their page or, if they didn't come from one, to home page
 // this function is called if the user failed authorization
