@@ -25,25 +25,24 @@ $_SESSION['errors'] = array();
 // check to see if user typed in the url, instead of submitting login form
 
 if(!isset($_SERVER['HTTP_REFERER'])) {
-	$errorMessage = 'Program was unable to process the submitted form';
-	redirectUser($errorMessage);}
-
-$returnURL = $_SERVER['HTTP_REFERER'];
-if (empty($_POST['id'])) {
-	$errorMessage = 'Program was unable to process the submitted form';
+	$errorMessage = 'program was unable to process the submitted form';
 	redirectUser($errorMessage);
 }
+
+$returnURL = $_SERVER['HTTP_REFERER'];
+
+if (empty($_POST['id'])) {
+	$errorMessage = '$_POST is empty.';
+	redirectUser($errorMessage);
+}
+
 $id = $_POST['id'];
 // This variable is assigned a value when submitting the login form
 // if ont, send back to whatever page they were on
 if (!isset($_POST['token'])) {
-	$errorMessage = 'Program was unable to process the submitted form';
+	$errorMessage = 'program was unable to process the submitted form.';
 	redirectUser($errorMessage);
 } 
-if (!isset($_POST['token'])) {
-	$errorMessage = 'Program was unable to process the submitted form.';
-	redirectUser($errorMessage);
-}
 // function returns either true (which is bad), or false( which means the tokens match)
 $badFormSubmissoin = checkToken($_POST['token']);
 if ($badFormSubmissoin) {
@@ -92,7 +91,7 @@ if (empty($_POST['email'])) {
 }
 // if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
-	header('location: '. WWW_ROOT . 'login/register.php ');
+	header('location: '. WWW_ROOT . 'login/userEdit.php ');
 	die();
 }
 
@@ -111,33 +110,38 @@ if ($email != $db_email) {
 }
 if (!empty($_POST['password'])) {
 	$password = $_POST['password'];
+	// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
 	if (strlen($password) < 6) {
 		$_SESSION['errors']['passwordtoshort'] = 'Password needs to be 6 characters or more';
+		header('location: '. WWW_ROOT . 'users/userEdit.php?id=' . $id);
+		die();
+
 	}
 	//hash password
-	$hashedAndSaltedPassword = sha1($db_salt . $password);
-	if ($hashedAndSaltedPassword != $db_password) {
-		$updateWorked = updatePassword($hash, $id, $password);
-		if ($updateWorked->rowCount() != 1) {
-			$_SESSION['bug'] = 'unable to update your password.';
-			header('location: ' . WWW_ROOT  . 'error.php ');
-			die();
+	if (!isset($_SESSION['errors'])) {
+		$hashedAndSaltedPassword = sha1($db_salt . $password);
+		if ($hashedAndSaltedPassword != $db_password) {
+			$updateWorked = updatePassword($hash, $id, $password);
+			if ($updateWorked->rowCount() != 1) {
+				$_SESSION['bug'] = 'unable to update your password.';
+				unset($_SESSION['success']);
+				header('location: ' . WWW_ROOT  . 'error.php ');
+				die();
+			}
+			$_SESSION['success'] = 'Password Updated!';
 		}
-		$_SESSION['success']['password'] = 'Password Updated!';
 	}
 }
-// make sure their password is at least 6 characters long, don't feel like making a hackers job too easy
+// make error message inside password validation
 
 
 // after further validation  - if errors, back to registration form
 if (!empty($_SESSION['errors'])) {
-	header('location:  '. WWW_ROOT . 'login/register.php ');
+	header('location:  '. WWW_ROOT . 'users/userEdit_update.php?id=' . $id);
 	die();
 }
-
 //insert into user
-$insert_stmt = insertUser($hash, $name, $hashedAndSaltedPassword, $email, $salt, $hashName);
-// check if insert failed
+/*
 if ($insert_stmt->rowCount() != 1) {
 	$_SESSION['bug'] = 'Was unable to insert your new registration into the database :(';
 	header('location: ' . WWW_ROOT  . 'error.php ');
@@ -155,7 +159,7 @@ if ($insert_stmt->rowCount() != 1) {
 	die();
 }
 
+*/
 
 
-?>
 ?>
