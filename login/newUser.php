@@ -65,12 +65,6 @@ if (empty($_POST['hashName'])) {
 	$hashName = $_POST['hashName'];
 }
 
-// make sure user name is only letters and numbers
-if (!ctype_alnum($name)) {
-	$_SESSION['errors']['badname'] = 'user name can only contain letters and numbers';
-} 
-
-
 if (empty($_POST['email'])) {
 	$_SESSION['errors']['nullemail'] = 'Email required. Don\'t worry, we only need it to reset your password.';
 } else {
@@ -86,6 +80,11 @@ if (!empty($_SESSION['errors'])) {
 	header('location: '. WWW_ROOT . 'login/register.php ');
 	die();
 }
+
+// make sure user name is only letters and numbers
+if (!ctype_alnum($name)) {
+	$_SESSION['errors']['badname'] = 'user name can only contain letters and numbers';
+} 
 
 // make sure this person isn't making a user name that someone else has choosen.
 $nameIsNotUnique = checkUniqueUserName($hash, $name);
